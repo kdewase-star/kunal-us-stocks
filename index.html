@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#1877f2">
+  <meta name="description" content="Kunal US Stocks — US stock market monitoring dashboard">
+  <title>Kunal US Stocks</title>
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" href="assets/logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <div class="brand-mark">K</div>
+      <div>
+        <div class="brand-title">Kunal US Stocks</div>
+        <div class="brand-subtitle">US Market Monitor</div>
+      </div>
+    </div>
+    <button id="refreshBtn" class="icon-btn" aria-label="Refresh data" title="Refresh">↻</button>
+  </header>
+
+  <main class="container">
+    <section class="hero-card">
+      <div>
+        <p class="eyebrow">US MARKET</p>
+        <h1>Track your US stocks</h1>
+        <p class="muted">Blue & white dashboard for watchlists, market indices, movers and stock details.</p>
+      </div>
+      <div class="market-status" id="marketStatus">Loading…</div>
+    </section>
+
+    <section>
+      <div class="section-head">
+        <h2>Market Overview</h2>
+        <span class="muted small" id="updatedAt">—</span>
+      </div>
+      <div class="index-grid" id="indexGrid"></div>
+    </section>
+
+    <section>
+      <div class="section-head">
+        <h2>My Watchlist</h2>
+        <button id="addBtn" class="text-btn">+ Add</button>
+      </div>
+      <div class="watchlist" id="watchlist"></div>
+    </section>
+
+    <section>
+      <div class="section-head">
+        <h2>Top Movers</h2>
+        <div class="segmented">
+          <button class="seg-btn active" data-mover="gainers">Gainers</button>
+          <button class="seg-btn" data-mover="losers">Losers</button>
+        </div>
+      </div>
+      <div class="movers" id="movers"></div>
+    </section>
+
+    <section class="details-card" id="details">
+      <div class="empty-state">
+        <div class="empty-icon">⌁</div>
+        <h3>Select a stock</h3>
+        <p>Tap any watchlist or mover card to see more information.</p>
+      </div>
+    </section>
+
+    <section class="info-card">
+      <h3>Data & updates</h3>
+      <p id="dataMessage">Loading the latest GitHub Actions market snapshot.</p>
+      <p class="small muted">This app uses delayed/unofficial market data supplied by the repository snapshot. It is for monitoring, not financial advice.</p>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <span>© Kunal US Stocks</span>
+    <span>Built as a separate PWA</span>
+  </footer>
+
+  <div id="modal" class="modal hidden">
+    <div class="modal-card">
+      <div class="modal-head">
+        <h3>Add to watchlist</h3>
+        <button id="closeModal" class="icon-btn">×</button>
+      </div>
+      <p class="muted">Enter a US ticker symbol, for example: AAPL</p>
+      <div class="add-row">
+        <input id="tickerInput" maxlength="8" placeholder="AAPL" autocomplete="off">
+        <button id="saveTicker" class="primary-btn">Add</button>
+      </div>
+      <p class="small muted">The ticker is saved on this device. Data appears when it exists in the repository snapshot.</p>
+    </div>
+  </div>
+
+  <script src="app.js" defer></script>
+</body>
+</html>
